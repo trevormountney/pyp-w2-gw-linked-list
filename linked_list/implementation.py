@@ -86,6 +86,11 @@ class LinkedList(AbstractLinkedList):
         return len(self)
 
     def pop(self, index=None):
+        
+        if index > len(self) - 1:
+            print(len(self))
+            raise IndexError
+        
         if self.start.next is None:
             return_elem = self.start.elem
             self.start = None
@@ -98,6 +103,7 @@ class LinkedList(AbstractLinkedList):
         
         if index is None:
             index = len(self) - 1
+        
         
         count = 0
         previous = None
@@ -175,3 +181,4 @@ l1 = LinkedList([9])
 print(l1.pop())
 print(l1.start)
 print(l1.end)
+
