@@ -86,8 +86,15 @@ class LinkedList(AbstractLinkedList):
         return len(self)
 
     def pop(self, index=None):
+        if self.start.next is None:
+            return_elem = self.start.elem
+            self.start = None
+            return return_elem
+        
         if index == 0:
-            return self.start.elem
+            return_elem = self.start.elem
+            self.start = self.start.next
+            return return_elem
         
         if index is None:
             index = len(self) - 1
@@ -101,6 +108,7 @@ class LinkedList(AbstractLinkedList):
             current = current.next
             count += 1
         else:
+            previous.next = current.next
             return current.elem
             
         #return self[index]
@@ -148,7 +156,7 @@ print(something)
 print(enumerate(iter(something)) == enumerate(something))
 print(something[1])
 
-something2 = LinkedList([5, 6, 7])
+something2 = LinkedList([5, 6, 9])
 
 print(something + something2)
 
@@ -158,6 +166,12 @@ new_list = my_list + LinkedList([1])
 
 print(LinkedList([1] == LinkedList([1])))
 
+print(something2)
+print(something2.pop(0))
+print(something2)
 
-print(something2.pop())
+l1 = LinkedList([9])
 
+print(l1.pop())
+print(l1.start)
+print(l1.end)
