@@ -87,6 +87,10 @@ class LinkedList(AbstractLinkedList):
 
     def pop(self, index=None):
         
+        # Raise error if empty list
+        if self.start is None:
+            raise IndexError
+        
         if index > len(self) - 1:
             print(len(self))
             raise IndexError
