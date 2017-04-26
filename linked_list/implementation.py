@@ -48,8 +48,8 @@ class LinkedList(AbstractLinkedList):
         for i, v in enumerate(self):
             if i == index:
                 return v.elem
-            #else:
-            #    raise IndexError
+            
+        raise IndexError
 
     def __add__(self, other):
         new_linked_list = LinkedList()
@@ -67,7 +67,6 @@ class LinkedList(AbstractLinkedList):
         other_list = [each for each in enumerate(other)]
         if self_list == other_list:
             return True
-            
 
     def append(self, elem):
         node = Node(elem)
@@ -144,7 +143,7 @@ class LinkedList(AbstractLinkedList):
             raise StopIteration'''
             
     
-
+"""
 something = LinkedList([5, 6, 7])
 
 '''print(something.start)
@@ -186,3 +185,4 @@ print(l1.pop())
 print(l1.start)
 print(l1.end)
 
+"""
