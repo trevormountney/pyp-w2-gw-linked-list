@@ -65,8 +65,12 @@ class LinkedList(AbstractLinkedList):
     def __eq__(self, other):
         self_list = [each for each in enumerate(self)]
         other_list = [each for each in enumerate(other)]
-        if self_list == other_list:
-            return True
+        return self_list == other_list
+            
+    def __ne__(self, other): # working on this
+        self_list = [each for each in enumerate(self)]
+        other_list = [each for each in enumerate(other)]
+        return not self_list == other_list
 
     def append(self, elem):
         node = Node(elem)
@@ -135,54 +139,3 @@ class LinkedList(AbstractLinkedList):
         except(AttributeError):
             raise StopIteration
 
-        '''try:
-            while self.next_node != self.end:
-                yield self.next_node
-                self.next_node = self.next_node.next
-        except (AttributeError):
-            raise StopIteration'''
-            
-    
-"""
-something = LinkedList([5, 6, 7])
-
-'''print(something.start)
-print(something.start.next)
-print(something.end)
-print(something.end.next)'''
-
-for each in something:
-    print(each)
-    
-for each in something:
-    print(each)
-    
-print(len(something))
-print(len(something))
-print(something.count())
-print(something)
-
-print(enumerate(iter(something)) == enumerate(something))
-print(something[1])
-
-something2 = LinkedList([5, 6, 9])
-
-print(something + something2)
-
-my_list = LinkedList()
-new_list = my_list + LinkedList([1])
-#print(new_list == my_list)
-
-print(LinkedList([1] == LinkedList([1])))
-
-print(something2)
-print(something2.pop(0))
-print(something2)
-
-l1 = LinkedList([9])
-
-print(l1.pop())
-print(l1.start)
-print(l1.end)
-
-"""

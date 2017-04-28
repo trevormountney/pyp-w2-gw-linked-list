@@ -23,8 +23,8 @@ class Node(object):
         except(AttributeError):
             return False
             
-   # def __ne__(self, other): # is this needed?
-    #    return self.elem != other.elem and self.next != other.next
+    # def __ne__(self, other): # is this needed?
+    #     return self.elem != other.elem and self.next != other.next
 
     def __repr__(self):
         return self.__str__()
