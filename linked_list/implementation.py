@@ -54,20 +54,20 @@ class LinkedList(AbstractLinkedList):
     def __add__(self, other):
         new_linked_list = LinkedList()
         for each in self:
-            new_linked_list.append(each)
+            new_linked_list.append(each.elem)
         for each in other:
-            new_linked_list.append(each)
+            new_linked_list.append(each.elem)
         return new_linked_list
 
     def __iadd__(self, other):
-        pass
+        return self + other
 
     def __eq__(self, other):
         self_list = [each for each in enumerate(self)]
         other_list = [each for each in enumerate(other)]
         return self_list == other_list
             
-    def __ne__(self, other): # working on this
+    def __ne__(self, other):
         self_list = [each for each in enumerate(self)]
         other_list = [each for each in enumerate(other)]
         return not self_list == other_list
