@@ -54,6 +54,19 @@ class LinkedList(AbstractLinkedList):
         other_list = [each for each in enumerate(other)]
         return not self_list == other_list
 
+    def __next__(self):
+        try:
+            if self.next_node is None:
+                raise StopIteration
+            else:
+                result = self.next_node
+                self.next_node = self.next_node.next
+                return result
+        except(AttributeError):
+            raise StopIteration
+
+    next = __next__
+
     def append(self, elem):
         node = Node(elem)
 
@@ -104,14 +117,3 @@ class LinkedList(AbstractLinkedList):
         else:
             previous.next = current.next
             return current.elem
-
-    def next(self):
-        try:
-            if self.next_node is None:
-                raise StopIteration
-            else:
-                result = self.next_node
-                self.next_node = self.next_node.next
-                return result
-        except(AttributeError):
-            raise StopIteration
