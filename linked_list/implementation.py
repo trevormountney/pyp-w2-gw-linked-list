@@ -1,7 +1,5 @@
-#from .interface import AbstractLinkedList
-#from .node import Node
-from interface import AbstractLinkedList
-from node import Node
+from .interface import AbstractLinkedList
+from .node import Node
 
 
 class LinkedList(AbstractLinkedList):
@@ -12,7 +10,7 @@ class LinkedList(AbstractLinkedList):
     def __init__(self, elements=None):
         self.start = None
         self.end = None
-        
+
         if elements:
             for elem in elements:
                 self.append(elem)
@@ -25,30 +23,14 @@ class LinkedList(AbstractLinkedList):
         return sum((1 for each in self))
 
     def __iter__(self):
-        '''code if not using next (not tested in all situations) - now obsolete
-        
-        next_node = self.start.next
-        node_list = [self.start] # are lists allowed in this project?
-        if next_node:
-            while next_node != self.end:
-                node_list.append(next_node)
-                next_node = next_node.next
-            else:
-                node_list.append(self.end)
-        return iter(node_list)
-        '''
-        '''if self.start == self.end:
-            return iter(self.start)
-        else:'''
         self.next_node = self.start
         return self
-        
-        
+
     def __getitem__(self, index):
         for i, v in enumerate(self):
             if i == index:
                 return v.elem
-            
+
         raise IndexError
 
     def __add__(self, other):
@@ -66,7 +48,7 @@ class LinkedList(AbstractLinkedList):
         self_list = [each for each in enumerate(self)]
         other_list = [each for each in enumerate(other)]
         return self_list == other_list
-            
+
     def __ne__(self, other):
         self_list = [each for each in enumerate(self)]
         other_list = [each for each in enumerate(other)]
@@ -74,10 +56,10 @@ class LinkedList(AbstractLinkedList):
 
     def append(self, elem):
         node = Node(elem)
-        
+
         if self.start is None:
             self.start = node
-          
+
         elif self.end is None:
             self.start.next = node
             self.end = node
@@ -89,33 +71,32 @@ class LinkedList(AbstractLinkedList):
         return len(self)
 
     def pop(self, index=None):
-        
+
         # Raise error if empty list
         if self.start is None:
             raise IndexError
-        
+
         if index > len(self) - 1:
             print(len(self))
             raise IndexError
-        
+
         if self.start.next is None:
             return_elem = self.start.elem
             self.start = None
             return return_elem
-        
+
         if index == 0:
             return_elem = self.start.elem
             self.start = self.start.next
             return return_elem
-        
+
         if index is None:
             index = len(self) - 1
-        
-        
+
         count = 0
         previous = None
         current = self.start
-        
+
         while index != count:
             previous = current
             current = current.next
@@ -123,13 +104,9 @@ class LinkedList(AbstractLinkedList):
         else:
             previous.next = current.next
             return current.elem
-            
-        #return self[index]
 
-    
-    
     def next(self):
-        try: 
+        try:
             if self.next_node is None:
                 raise StopIteration
             else:
@@ -138,4 +115,3 @@ class LinkedList(AbstractLinkedList):
                 return result
         except(AttributeError):
             raise StopIteration
-
