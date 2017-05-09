@@ -89,8 +89,10 @@ class LinkedList(AbstractLinkedList):
         if self.start is None:
             raise IndexError
 
+        if index is None:
+            index = len(self) - 1
+            
         if index > len(self) - 1:
-            print(len(self))
             raise IndexError
 
         if self.start.next is None:
@@ -102,9 +104,6 @@ class LinkedList(AbstractLinkedList):
             return_elem = self.start.elem
             self.start = self.start.next
             return return_elem
-
-        if index is None:
-            index = len(self) - 1
 
         count = 0
         previous = None
